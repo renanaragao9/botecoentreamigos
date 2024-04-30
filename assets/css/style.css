@@ -419,6 +419,7 @@ h1, h2, h3, h4, h5, h6 {
 @media (max-width: 992px) {
   #hero .container {
     padding-top: 98px;
+    margin-top: -300px;
   }
 }
 #hero h1 {
@@ -439,6 +440,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 #hero .btns {
   margin-top: 30px;
+  
 }
 #hero .btn-menu, #hero .btn-book {
   font-weight: 600;
@@ -452,6 +454,9 @@ h1, h2, h3, h4, h5, h6 {
   line-height: 1;
   color: white;
   border: 2px solid #cda45e;
+  width: 250px;
+  margin-top: 20px;
+  text-align: center;
 }
 #hero .btn-menu:hover, #hero .btn-book:hover {
   background: #cda45e;
