@@ -3,8 +3,8 @@
 namespace App\Filament\Resources\Testimonials\Schemas;
 
 use Filament\Forms\Components\FileUpload;
-use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Textarea;
+use Filament\Forms\Components\TextInput;
 use Filament\Schemas\Schema;
 
 class TestimonialForm
@@ -26,6 +26,7 @@ class TestimonialForm
                     ->image()
                     ->imageEditor()
                     ->directory('testimonials')
+                    ->required()
                     ->columnSpanFull(),
                 Textarea::make('text')
                     ->label('Depoimento')

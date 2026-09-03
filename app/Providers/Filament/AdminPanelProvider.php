@@ -36,12 +36,8 @@ class AdminPanelProvider extends PanelProvider
             ->navigationGroups([
                 NavigationGroup::make('Página Inicial'),
                 NavigationGroup::make('Cardápio'),
-                NavigationGroup::make('Especiais'),
-                NavigationGroup::make('Eventos'),
-                NavigationGroup::make('Depoimentos'),
-                NavigationGroup::make('Galeria'),
-                NavigationGroup::make('Chefs'),
-                NavigationGroup::make('Contato'),
+                NavigationGroup::make('Reservas'),
+                NavigationGroup::make('Administração'),
             ])
             ->discoverResources(in: app_path('Filament/Resources'), for: 'App\Filament\Resources')
             ->discoverPages(in: app_path('Filament/Pages'), for: 'App\Filament\Pages')

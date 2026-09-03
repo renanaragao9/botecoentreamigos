@@ -28,7 +28,7 @@ class WhyUsItemResource extends Resource
 
     protected static ?string $pluralModelLabel = 'motivos (Por que nós)';
 
-    protected static ?int $navigationSort = 3;
+    protected static ?int $navigationSort = 4;
 
     public static function form(Schema $schema): Schema
     {

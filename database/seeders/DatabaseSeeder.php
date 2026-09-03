@@ -11,6 +11,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
+        $this->call(FallbackImageSeeder::class);
         $this->call(AdminUserSeeder::class);
         $this->call(AboutSectionSeeder::class);
         $this->call(MenuSeeder::class);

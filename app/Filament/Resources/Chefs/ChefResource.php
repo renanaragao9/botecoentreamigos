@@ -20,7 +20,7 @@ class ChefResource extends Resource
 
     protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedUserGroup;
 
-    protected static string|\UnitEnum|null $navigationGroup = 'Chefs';
+    protected static string|\UnitEnum|null $navigationGroup = 'Página Inicial';
 
     protected static ?string $navigationLabel = 'Chefs';
 
@@ -28,7 +28,7 @@ class ChefResource extends Resource
 
     protected static ?string $pluralModelLabel = 'chefs';
 
-    protected static ?int $navigationSort = 1;
+    protected static ?int $navigationSort = 9;
 
     public static function form(Schema $schema): Schema
     {

@@ -3,10 +3,10 @@
 namespace App\Filament\Resources\MenuItems\Tables;
 
 use Filament\Actions\BulkActionGroup;
+use Filament\Actions\DeleteAction;
 use Filament\Actions\DeleteBulkAction;
 use Filament\Actions\EditAction;
 use Filament\Tables\Columns\IconColumn;
-use Filament\Tables\Columns\ImageColumn;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Filters\SelectFilter;
 use Filament\Tables\Filters\TernaryFilter;
@@ -21,7 +21,6 @@ class MenuItemsTable
             ->reorderable('order')
             ->reorderRecordsTriggerAction(fn ($action) => $action->label('Reordenar (arraste)'))
             ->columns([
-                ImageColumn::make('image')->label('Foto')->circular(),
                 TextColumn::make('name')->label('Nome')->searchable(),
                 TextColumn::make('category.name')->label('Categoria')->badge(),
                 TextColumn::make('price')->label('Preço'),
@@ -36,6 +35,7 @@ class MenuItemsTable
             ])
             ->recordActions([
                 EditAction::make(),
+                DeleteAction::make(),
             ])
             ->toolbarActions([
                 BulkActionGroup::make([

@@ -21,12 +21,19 @@ class HomeController extends Controller
             'aboutSection' => AboutSection::first(),
             'aboutFeatures' => AboutFeature::all(),
             'whyUsItems' => WhyUsItem::all(),
-            'menuCategories' => MenuCategory::with('items')->get(),
             'specials' => Special::all(),
             'events' => EventItem::with('features')->get(),
             'testimonials' => Testimonial::all(),
             'galleryImages' => GalleryImage::all(),
             'chefs' => Chef::all(),
+            'contactInfo' => ContactInfo::first(),
+        ]);
+    }
+
+    public function menu()
+    {
+        return view('menu', [
+            'menuCategories' => MenuCategory::with('items')->get(),
             'contactInfo' => ContactInfo::first(),
         ]);
     }

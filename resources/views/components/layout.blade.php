@@ -49,15 +49,15 @@
   {
     "@@context": "https://schema.org",
     "@@type": "BarOrPub",
-    "name": "Entreamigos",
+    "name": "{{ $contactInfo?->business_name ?? 'Entreamigos' }}",
     "image": "{{ asset('assets/img/logo.jpeg') }}",
     "url": "{{ url('/') }}",
-    "telephone": "+5585992226196",
+    "telephone": "{{ $contactInfo?->phone ?? '+5585992226196' }}",
     "servesCuisine": "Brasileira",
     "priceRange": "$$",
     "address": {
       "@@type": "PostalAddress",
-      "streetAddress": "Rua Monsenhor Salazar, 882",
+      "streetAddress": "{{ $contactInfo?->address ?? 'Rua Monsenhor Salazar, 882' }}",
       "addressLocality": "Fortaleza",
       "addressRegion": "CE",
       "addressCountry": "BR"
@@ -69,8 +69,8 @@
       "closes": "00:00"
     },
     "sameAs": [
-      "https://www.instagram.com/botecoentreofc/",
-      "https://www.facebook.com/search/top?q=entre%20amigos%20bar%20%26%20espetaria"
+      "{{ $contactInfo?->instagram_url ?? 'https://www.instagram.com/botecoentreofc/' }}",
+      "{{ $contactInfo?->facebook_url ?? 'https://www.facebook.com/search/top?q=entre%20amigos%20bar%20%26%20espetaria' }}"
     ]
   }
   </script>

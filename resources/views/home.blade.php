@@ -1,29 +1,30 @@
-<x-layout title="Entreamigos - Bar e Espetaria em Fortaleza-CE"
-    description="Boteco Entreamigos: bar e espetaria em Fortaleza-CE. Espetos, feijão verde, carne do sol e camarão. Aberto de terça a sábado, reserve sua mesa ou seu evento.">
+<x-layout :title="$contactInfo?->seo_title ?? 'Entreamigos - Bar e Espetaria em Fortaleza-CE'"
+    :description="$contactInfo?->seo_description ?? 'Boteco Entreamigos: bar e espetaria em Fortaleza-CE.'"
+    :contact-info="$contactInfo">
 
     <!-- ======= Top Bar ======= -->
     <div id="topbar" class="d-flex align-items-center fixed-top">
         <div class="container d-flex justify-content-center justify-content-md-between">
             <div class="contact-info d-flex align-items-center">
                 <i class="bi bi-phone d-flex align-items-center"><a
-                        href="https://wa.me/5585992226196?text=Ol%C3%A1%2C+Boa+noite%21" target="_blank"
-                        rel="noopener noreferrer"><span>+55 (85) 9922-9196</span></a></i>
-                <i class="bi bi-clock d-flex align-items-center ms-4"><span> Ter-Sab: 17AM - 00PM</span></i>
+                        href="https://wa.me/{{ $contactInfo?->whatsapp ?? '5585992226196' }}?text=Ol%C3%A1%2C+Boa+noite%21" target="_blank"
+                        rel="noopener noreferrer"><span>{{ $contactInfo?->phone ?? '+55 (85) 9922-9196' }}</span></a></i>
+                <i class="bi bi-clock d-flex align-items-center ms-4"><span> {{ $contactInfo?->open_hours ?? 'Ter-Sab: 17:00 - 00:00' }}</span></i>
             </div>
         </div>
     </div>
 
     <!-- ======= Header ======= -->
-    <header id="header" class="fixed-top d-flex align-items-cente">
+    <header id="header" class="fixed-top d-flex align-items-center">
         <div class="container-fluid container-xl d-flex align-items-center justify-content-lg-between">
 
-            <h1 class="logo me-auto me-lg-0"><a href="{{ url('/') }}">ENTREAMIGOS</a></h1>
+            <h1 class="logo me-auto me-lg-0"><a href="{{ url('/') }}">{{ $contactInfo?->business_name ?? 'ENTREAMIGOS' }}</a></h1>
 
             <nav id="navbar" class="navbar order-last order-lg-0">
                 <ul>
                     <li><a class="nav-link scrollto active" href="#hero">Inicio</a></li>
                     <li><a class="nav-link scrollto" href="#about">Sobre</a></li>
-                    <li><a class="nav-link scrollto" href="#menu">Cardápio</a></li>
+                    <li><a class="nav-link" href="{{ route('menu') }}">Cardápio</a></li>
                     <li><a class="nav-link scrollto" href="#specials">Especiais</a></li>
                     <li><a class="nav-link scrollto" href="#events">Eventos</a></li>
                     <li><a class="nav-link scrollto" href="#chefs">Chefs</a></li>
@@ -42,14 +43,14 @@
         <div class="container position-relative text-center text-lg-start" data-aos="zoom-in" data-aos-delay="100">
             <div class="row">
                 <div class="col-lg-8">
-                    <h1>Bem-Vindo ao <span>ENTREAMIGOS</span></h1>
-                    <h2>Há mais de 5 anos entregando comida de qualidade!</h2>
+                    <h1>{{ $contactInfo?->hero_title ?? 'Bem-Vindo ao ENTREAMIGOS' }}</h1>
+                    <h2>{{ $contactInfo?->hero_subtitle ?? 'Há mais de 5 anos entregando comida de qualidade!' }}</h2>
 
                     <div class="btns">
-                        <a href="#menu" class="btn-menu animated fadeInUp scrollto">Nosso cardápio</a>
-                        <a href="https://wa.me/5585992226196?text=Ol%C3%A1%2C+Boa+noite%21" target="_blank"
+                        <a href="{{ route('menu') }}" class="btn-menu animated fadeInUp">Nosso cardápio</a>
+                        <a href="https://wa.me/{{ $contactInfo?->whatsapp ?? '5585992226196' }}?text=Ol%C3%A1%2C+Boa+noite%21" target="_blank"
                             class="btn-menu animated fadeInUp scrollto">Fale conosco</a>
-                        <a href="https://www.instagram.com/botecoentreofc/" target="_blank"
+                        <a href="{{ $contactInfo?->instagram_url ?? 'https://www.instagram.com/botecoentreofc/' }}" target="_blank"
                             class="btn-menu animated fadeInUp scrollto">Instagram</a>
                     </div>
                 </div>
@@ -64,22 +65,22 @@
             <div class="container" data-aos="fade-up">
                 <div class="row">
                     <div class="col-lg-6 order-1 order-lg-2" data-aos="zoom-in" data-aos-delay="100">
-                        <div class="about-img">
-                            <img src="{{ Storage::url($aboutSection->image) }}" alt="Salão do bar Entreamigos">
-                        </div>
+                        @if ($aboutSection)
+                            <div class="about-img">
+                                <img src="{{ Storage::url($aboutSection->image) }}" alt="Salão do bar Entreamigos">
+                            </div>
+                        @endif
                     </div>
                     <div class="col-lg-6 pt-4 pt-lg-0 order-2 order-lg-1 content">
-                        <h3>{{ $aboutSection->title }}</h3>
-                        <p class="fst-italic">
-                            {{ $aboutSection->intro_text }}
-                        </p>
+                        <h3>{{ $aboutSection?->title }}</h3>
+                        <p class="fst-italic">{{ $aboutSection?->intro_text }}</p>
                         <ul>
                             @foreach ($aboutFeatures as $feature)
                                 <li><i class="bi bi-check-circle"></i>{{ $feature->text }}</li>
                             @endforeach
                         </ul>
                         <p>
-                            {{ $aboutSection->closing_text }}
+                            {{ $aboutSection?->closing_text }}
                         </p>
                     </div>
                 </div>
@@ -107,44 +108,6 @@
                 </div>
             </div>
         </section><!-- Fim da seção Por que nós -->
-
-        <!-- ======= cardapio Section ======= -->
-        <section id="menu" class="menu section-bg">
-            <div class="container" data-aos="fade-up">
-                <div class="section-title">
-                    <h2>Cardápio</h2>
-                    <p>Confira nosso saboroso cardápio</p>
-                </div>
-
-                <div class="row" data-aos="fade-up" data-aos-delay="100">
-                    <div class="col-lg-12 d-flex justify-content-center">
-                        <ul id="menu-flters">
-                            <li data-filter="*" class="filter-active">Todos</li>
-                            @foreach ($menuCategories as $category)
-                                <li data-filter=".{{ $category->slug }}">{{ $category->name }}</li>
-                            @endforeach
-                        </ul>
-                    </div>
-                </div>
-
-                <div class="row menu-container" data-aos="fade-up" data-aos-delay="200">
-                    @foreach ($menuCategories as $category)
-                        @foreach ($category->items as $item)
-                            <div class="col-lg-6 menu-item {{ $category->slug }}">
-                                <img src="{{ Storage::url($item->image) }}" class="menu-img"
-                                    alt="{{ $item->name }}">
-                                <div class="menu-content">
-                                    <a href="#">{{ $item->name }}</a><span>{{ $item->price }}</span>
-                                </div>
-                                <div class="menu-ingredients">
-                                    {{ $item->description }}
-                                </div>
-                            </div>
-                        @endforeach
-                    @endforeach
-                </div>
-            </div>
-        </section><!-- Fim do cardapio Section -->
 
         <!-- ======= especiais Section ======= -->
         <section id="specials" class="specials">
@@ -279,7 +242,7 @@
                 <div class="section-title">
                     <h2>Galeria</h2>
                     <p>Algumas fotos do nosso boteco</p>
-                    <a href="https://www.instagram.com/botecoentreofc/" target="_blank"
+                    <a href="{{ $contactInfo?->instagram_url ?? 'https://www.instagram.com/botecoentreofc/' }}" target="_blank"
                         class="btn-menu animated fadeInUp scrollto">
                         <i class="bi bi-instagram"></i> Siga no Instagram
                     </a>
@@ -348,11 +311,13 @@
                 </div>
             </div>
 
-            <div data-aos="fade-up">
-                <iframe style="border:0; width: 100%; height: 350px;"
-                    src="{{ $contactInfo->map_embed_url }}"
-                    frameborder="0" loading="lazy" allowfullscreen></iframe>
-            </div>
+            @if ($contactInfo?->map_embed_url)
+                <div data-aos="fade-up">
+                    <iframe style="border:0; width: 100%; height: 350px;"
+                        src="{{ $contactInfo->map_embed_url }}"
+                        frameborder="0" loading="lazy" allowfullscreen></iframe>
+                </div>
+            @endif
 
             <div class="container" data-aos="fade-up">
                 <div class="row mt-5">
@@ -361,22 +326,22 @@
                             <div class="address">
                                 <i class="bi bi-geo-alt"></i>
                                 <h4>Localização:</h4>
-                                <p>{{ $contactInfo->address }}</p>
+                                <p>{{ $contactInfo?->address }}</p>
                             </div>
                             <div class="open-hours">
                                 <i class="bi bi-clock"></i>
                                 <h4>Horario de funcionamento:</h4>
-                                <p>{{ $contactInfo->open_hours }}</p>
+                                <p>{{ $contactInfo?->open_hours }}</p>
                             </div>
                             <div class="email">
                                 <i class="bi bi-envelope"></i>
                                 <h4>Email:</h4>
-                                <p>{{ $contactInfo->email }}</p>
+                                <p>{{ $contactInfo?->email }}</p>
                             </div>
                             <div class="phone">
                                 <i class="bi bi-phone"></i>
                                 <h4>Telefone:</h4>
-                                <p>{{ $contactInfo->phone }}</p>
+                                <p>{{ $contactInfo?->phone }}</p>
                             </div>
                         </div>
                     </div>
@@ -394,18 +359,19 @@
 
                     <div class="col-lg-3 col-md-6">
                         <div class="footer-info">
-                            <h3>Entreamigos</h3>
+                            <h3>{{ $contactInfo?->business_name ?? 'Entreamigos' }}</h3>
                             <p>
-                                Rua: Monsenhor Salazar, 882<br>
-                                São João do Tauape, Fortaleza-CE Brasil<br><br>
-                                <strong>Telefone:</strong> +55 (85) 99222-6196<br>
-                                <strong>Email:</strong> botecoentreamigos@gmail.com<br>
+                                {{ $contactInfo?->address }}<br><br>
+                                <strong>Telefone:</strong> {{ $contactInfo?->phone }}<br>
+                                <strong>Email:</strong> {{ $contactInfo?->email }}<br>
                             </p>
                             <div class="social-links mt-3">
-                                <a href="https://www.facebook.com/search/top?q=entre%20amigos%20bar%20%26%20espetaria"
-                                    class="facebook"><i class="bx bxl-facebook"></i></a>
-                                <a href="https://www.instagram.com/botecoentreofc/" class="instagram"><i
-                                        class="bx bxl-instagram"></i></a>
+                                @if ($contactInfo?->facebook_url ?? true)
+                                    <a href="{{ $contactInfo?->facebook_url ?? 'https://www.facebook.com/search/top?q=entre%20amigos%20bar%20%26%20espetaria' }}" class="facebook"><i class="bx bxl-facebook"></i></a>
+                                @endif
+                                @if ($contactInfo?->instagram_url ?? true)
+                                    <a href="{{ $contactInfo?->instagram_url ?? 'https://www.instagram.com/botecoentreofc/' }}" class="instagram"><i class="bx bxl-instagram"></i></a>
+                                @endif
                             </div>
                         </div>
                     </div>
@@ -415,7 +381,7 @@
                         <ul>
                             <li><i class="bx bx-chevron-right"></i> <a href="#hero">Inicio</a></li>
                             <li><i class="bx bx-chevron-right"></i> <a href="#about">Sobre nós</a></li>
-                            <li><i class="bx bx-chevron-right"></i> <a href="#menu">Cardápio</a></li>
+                            <li><i class="bx bx-chevron-right"></i> <a href="{{ route('menu') }}">Cardápio</a></li>
                             <li><i class="bx bx-chevron-right"></i> <a href="#book-a-table">Reservas</a></li>
                             <li><i class="bx bx-chevron-right"></i> <a href="#contact">Contato</a></li>
                         </ul>
@@ -426,7 +392,7 @@
 
         <div class="container">
             <div class="copyright">
-                &copy; Copyright {{ now()->year }} <strong><span>Entreamigos</span></strong>. Todos os direitos
+                &copy; Copyright {{ now()->year }} <strong><span>{{ $contactInfo?->business_name ?? 'Entreamigos' }}</span></strong>. Todos os direitos
                 reservados
             </div>
             <div class="credits">

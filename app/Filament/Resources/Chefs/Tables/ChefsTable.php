@@ -3,9 +3,9 @@
 namespace App\Filament\Resources\Chefs\Tables;
 
 use Filament\Actions\BulkActionGroup;
+use Filament\Actions\DeleteAction;
 use Filament\Actions\DeleteBulkAction;
 use Filament\Actions\EditAction;
-use Filament\Tables\Columns\ImageColumn;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 
@@ -18,7 +18,6 @@ class ChefsTable
             ->reorderable('order')
             ->reorderRecordsTriggerAction(fn ($action) => $action->label('Reordenar (arraste)'))
             ->columns([
-                ImageColumn::make('image')->label('Foto')->circular(),
                 TextColumn::make('name')->label('Nome')->searchable(),
             ])
             ->filters([
@@ -26,6 +25,7 @@ class ChefsTable
             ])
             ->recordActions([
                 EditAction::make(),
+                DeleteAction::make(),
             ])
             ->toolbarActions([
                 BulkActionGroup::make([

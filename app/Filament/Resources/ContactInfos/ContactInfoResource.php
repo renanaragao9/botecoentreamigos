@@ -20,19 +20,19 @@ class ContactInfoResource extends Resource
 
     protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedPhone;
 
-    protected static string|\UnitEnum|null $navigationGroup = 'Contato';
+    protected static string|\UnitEnum|null $navigationGroup = 'Página Inicial';
 
-    protected static ?string $navigationLabel = 'Contato';
+    protected static ?string $navigationLabel = 'Configurações do site';
 
-    protected static ?string $modelLabel = 'informação de contato';
+    protected static ?string $modelLabel = 'configuração do site';
 
-    protected static ?string $pluralModelLabel = 'informações de contato';
+    protected static ?string $pluralModelLabel = 'configurações do site';
 
     protected static ?int $navigationSort = 1;
 
     public static function canCreate(): bool
     {
-        return static::getModel()::count() === 0;
+        return true;
     }
 
     public static function form(Schema $schema): Schema

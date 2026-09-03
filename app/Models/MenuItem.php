@@ -2,11 +2,14 @@
 
 namespace App\Models;
 
+use App\Models\Concerns\HasFallbackImage;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class MenuItem extends Model
 {
+    use HasFallbackImage;
+
     protected $fillable = ['menu_category_id', 'name', 'price', 'description', 'image', 'order', 'active'];
 
     protected $casts = ['active' => 'boolean'];
@@ -20,5 +23,10 @@ class MenuItem extends Model
     public function category(): BelongsTo
     {
         return $this->belongsTo(MenuCategory::class, 'menu_category_id');
+    }
+
+    protected function fallbackImage(): string
+    {
+        return 'menu/espetos.jpg';
     }
 }

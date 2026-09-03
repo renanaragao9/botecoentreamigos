@@ -3,6 +3,7 @@
 namespace App\Filament\Resources\AboutSections\Pages;
 
 use App\Filament\Resources\AboutSections\AboutSectionResource;
+use App\Models\AboutSection;
 use Filament\Actions\CreateAction;
 use Filament\Resources\Pages\ListRecords;
 
@@ -12,8 +13,6 @@ class ListAboutSections extends ListRecords
 
     protected function getHeaderActions(): array
     {
-        return [
-            CreateAction::make(),
-        ];
+        return AboutSection::query()->exists() ? [] : [CreateAction::make()];
     }
 }

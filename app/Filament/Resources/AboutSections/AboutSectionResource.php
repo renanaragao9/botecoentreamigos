@@ -28,11 +28,11 @@ class AboutSectionResource extends Resource
 
     protected static ?string $pluralModelLabel = 'seção sobre';
 
-    protected static ?int $navigationSort = 1;
+    protected static ?int $navigationSort = 2;
 
     public static function canCreate(): bool
     {
-        return static::getModel()::count() === 0;
+        return true;
     }
 
     public static function form(Schema $schema): Schema

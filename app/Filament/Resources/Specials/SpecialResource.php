@@ -20,7 +20,7 @@ class SpecialResource extends Resource
 
     protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedStar;
 
-    protected static string|\UnitEnum|null $navigationGroup = 'Especiais';
+    protected static string|\UnitEnum|null $navigationGroup = 'Página Inicial';
 
     protected static ?string $navigationLabel = 'Pratos Especiais';
 
@@ -28,7 +28,7 @@ class SpecialResource extends Resource
 
     protected static ?string $pluralModelLabel = 'pratos especiais';
 
-    protected static ?int $navigationSort = 1;
+    protected static ?int $navigationSort = 5;
 
     public static function form(Schema $schema): Schema
     {

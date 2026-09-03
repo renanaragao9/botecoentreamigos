@@ -3,18 +3,27 @@
 namespace App\Livewire;
 
 use App\Mail\BookTableMail;
+use App\Models\Booking;
+use App\Models\ContactInfo;
 use Illuminate\Support\Facades\Mail;
 use Livewire\Component;
 
 class BookTableForm extends Component
 {
     public string $name = '';
+
     public string $email = '';
+
     public string $phone = '';
+
     public string $date = '';
+
     public string $time = '';
+
     public string $people = '';
+
     public string $event_type = '';
+
     public string $message = '';
 
     public bool $sent = false;
@@ -51,7 +60,10 @@ class BookTableForm extends Component
     {
         $data = $this->validate();
 
-        Mail::to(config('mail.from.address'))->send(new BookTableMail($data));
+        Booking::create($data);
+
+        Mail::to(ContactInfo::query()->value('email') ?: config('mail.from.address'))
+            ->send(new BookTableMail($data));
 
         $this->sent = true;
         $this->reset(['name', 'email', 'phone', 'date', 'time', 'people', 'event_type', 'message']);
@@ -60,11 +72,13 @@ class BookTableForm extends Component
     public function whatsappLink(): string
     {
         $text = "Olá, boa noite. Gostaria de agendar um evento!\n"
-            . "Nome: {$this->name}\nEmail: {$this->email}\nTelefone: {$this->phone}\n"
-            . "Data: {$this->date}\nHora: {$this->time}\nQuantidade de pessoas: {$this->people}\n"
-            . "Tipo de evento: {$this->event_type}";
+            ."Nome: {$this->name}\nEmail: {$this->email}\nTelefone: {$this->phone}\n"
+            ."Data: {$this->date}\nHora: {$this->time}\nQuantidade de pessoas: {$this->people}\n"
+            ."Tipo de evento: {$this->event_type}";
 
-        return 'https://api.whatsapp.com/send?phone=5585992226196&text=' . rawurlencode($text);
+        $whatsapp = ContactInfo::query()->value('whatsapp') ?: '5585992226196';
+
+        return 'https://api.whatsapp.com/send?phone='.preg_replace('/\D+/', '', $whatsapp).'&text='.rawurlencode($text);
     }
 
     public function render()

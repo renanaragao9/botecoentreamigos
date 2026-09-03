@@ -5,8 +5,8 @@ namespace App\Filament\Resources\MenuItems\Schemas;
 use App\Models\MenuCategory;
 use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\Select;
-use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Textarea;
+use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Toggle;
 use Filament\Schemas\Schema;
 
@@ -38,6 +38,7 @@ class MenuItemForm
                     ->image()
                     ->imageEditor()
                     ->directory('menu')
+                    ->required()
                     ->columnSpanFull(),
                 Textarea::make('description')
                     ->label('Descrição')

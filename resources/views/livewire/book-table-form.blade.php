@@ -46,12 +46,12 @@
             <input wire:model="message" type="text" class="form-control" placeholder="Mensagem (opcional)">
         </div>
 
-        <div class="text-center mt-3">
-            <button type="submit" class="btn btn-info" wire:loading.attr="disabled">
+        <div class="reservation-actions mt-3">
+            <button type="submit" class="reservation-action" wire:loading.attr="disabled">
                 <span wire:loading.remove>Reservar evento</span>
                 <span wire:loading>Enviando...</span>
             </button>
-            <a href="{{ $this->whatsappLink() }}" target="_blank" class="btn btn-success ms-2">
+            <a href="{{ $this->whatsappLink() }}" target="_blank" class="reservation-action">
                 Reservar via WhatsApp
             </a>
         </div>

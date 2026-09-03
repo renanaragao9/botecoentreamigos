@@ -3,9 +3,9 @@
 namespace App\Filament\Resources\Specials\Tables;
 
 use Filament\Actions\BulkActionGroup;
+use Filament\Actions\DeleteAction;
 use Filament\Actions\DeleteBulkAction;
 use Filament\Actions\EditAction;
-use Filament\Tables\Columns\ImageColumn;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 
@@ -18,7 +18,6 @@ class SpecialsTable
             ->reorderable('order')
             ->reorderRecordsTriggerAction(fn ($action) => $action->label('Reordenar (arraste)'))
             ->columns([
-                ImageColumn::make('image')->label('Foto')->circular(),
                 TextColumn::make('title')->label('Título')->searchable(),
                 TextColumn::make('subtitle')->label('Subtítulo')->limit(40),
             ])
@@ -27,6 +26,7 @@ class SpecialsTable
             ])
             ->recordActions([
                 EditAction::make(),
+                DeleteAction::make(),
             ])
             ->toolbarActions([
                 BulkActionGroup::make([

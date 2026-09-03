@@ -31,6 +31,7 @@ class ChefForm
                     ->image()
                     ->imageEditor()
                     ->directory('chefs')
+                    ->required()
                     ->columnSpanFull(),
             ]);
     }

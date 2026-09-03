@@ -3,8 +3,8 @@
 namespace App\Filament\Resources\EventItems\Schemas;
 
 use Filament\Forms\Components\FileUpload;
-use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Textarea;
+use Filament\Forms\Components\TextInput;
 use Filament\Schemas\Schema;
 
 class EventItemForm
@@ -27,6 +27,7 @@ class EventItemForm
                     ->image()
                     ->imageEditor()
                     ->directory('events')
+                    ->required()
                     ->columnSpanFull(),
             ]);
     }

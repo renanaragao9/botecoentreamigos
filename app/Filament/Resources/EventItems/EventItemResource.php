@@ -5,6 +5,7 @@ namespace App\Filament\Resources\EventItems;
 use App\Filament\Resources\EventItems\Pages\CreateEventItem;
 use App\Filament\Resources\EventItems\Pages\EditEventItem;
 use App\Filament\Resources\EventItems\Pages\ListEventItems;
+use App\Filament\Resources\EventItems\RelationManagers\FeaturesRelationManager;
 use App\Filament\Resources\EventItems\Schemas\EventItemForm;
 use App\Filament\Resources\EventItems\Tables\EventItemsTable;
 use App\Models\EventItem;
@@ -20,7 +21,7 @@ class EventItemResource extends Resource
 
     protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedCalendarDays;
 
-    protected static string|\UnitEnum|null $navigationGroup = 'Eventos';
+    protected static string|\UnitEnum|null $navigationGroup = 'Página Inicial';
 
     protected static ?string $navigationLabel = 'Eventos';
 
@@ -28,7 +29,7 @@ class EventItemResource extends Resource
 
     protected static ?string $pluralModelLabel = 'eventos';
 
-    protected static ?int $navigationSort = 1;
+    protected static ?int $navigationSort = 6;
 
     public static function form(Schema $schema): Schema
     {
@@ -43,7 +44,7 @@ class EventItemResource extends Resource
     public static function getRelations(): array
     {
         return [
-            \App\Filament\Resources\EventItems\RelationManagers\FeaturesRelationManager::class,
+            FeaturesRelationManager::class,
         ];
     }
 
