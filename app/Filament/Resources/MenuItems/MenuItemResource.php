@@ -23,13 +23,13 @@ class MenuItemResource extends Resource
 
     protected static string|\UnitEnum|null $navigationGroup = 'Cardápio';
 
-    protected static ?string $navigationLabel = 'Itens do Cardápio';
+    protected static ?string $navigationLabel = 'Itens do cardápio';
 
     protected static ?string $modelLabel = 'item do cardápio';
 
     protected static ?string $pluralModelLabel = 'itens do cardápio';
 
-    protected static ?int $navigationSort = 2;
+    protected static ?int $navigationSort = 3;
 
     public static function getEloquentQuery(): Builder
     {

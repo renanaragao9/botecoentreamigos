@@ -28,7 +28,7 @@ class AllergenGuideResource extends Resource
 
     protected static ?string $pluralModelLabel = 'guias de alérgenos';
 
-    protected static ?int $navigationSort = 3;
+    protected static ?int $navigationSort = 2;
 
     public static function form(Schema $schema): Schema
     {

@@ -10,6 +10,8 @@ class ListAllergenGuides extends ListRecords
 {
     protected static string $resource = AllergenGuideResource::class;
 
+    protected static ?string $title = 'Guias de alérgenos';
+
     protected function getHeaderActions(): array
     {
         return [

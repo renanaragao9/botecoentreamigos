@@ -28,7 +28,7 @@ class MenuSeeder extends Seeder
             ['img' => 'batata-frita-1200x900.jpg', 'filter' => 'filter-starters', 'name' => 'Batata Frita', 'price' => '22.90', 'desc' => 'batata crocante!!'],
             ['img' => 'empanado_camarao.jpg', 'filter' => 'filter-salads', 'name' => 'Empanado de camarão', 'price' => '32.90', 'desc' => 'camarao empanado'],
             ['img' => 'pasteis.jpg', 'filter' => 'filter-salads', 'name' => 'Pastelzinhos', 'price' => '24.90', 'desc' => 'Carne, queijo, carne do sol.'],
-            ['img' => 'batata-frita-1200x900.jpg', 'filter' => 'filter-specialty', 'name' => 'Torresmo', 'price' => '25.90', 'desc' => 'Torresmo'],
+            ['img' => 'torresmo_crocante.jpg', 'filter' => 'filter-specialty', 'name' => 'Torresmo', 'price' => '25.90', 'desc' => 'Torresmo'],
         ] as $i => $item) {
             MenuItem::create([
                 'menu_category_id' => $categories[$item['filter']]->id,

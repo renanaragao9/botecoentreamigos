@@ -11,6 +11,8 @@ class ListContactInfos extends ListRecords
 {
     protected static string $resource = ContactInfoResource::class;
 
+    protected static ?string $title = 'Configurações do site';
+
     protected function getHeaderActions(): array
     {
         return ContactInfo::query()->exists() ? [] : [CreateAction::make()];

@@ -2,7 +2,6 @@
     :description="$contactInfo?->seo_description ?? 'Boteco Entreamigos: bar e espetaria em Fortaleza-CE.'"
     :contact-info="$contactInfo">
 
-    <!-- ======= Top Bar ======= -->
     <div id="topbar" class="d-flex align-items-center fixed-top">
         <div class="container d-flex justify-content-center justify-content-md-between">
             <div class="contact-info d-flex align-items-center">
@@ -14,11 +13,15 @@
         </div>
     </div>
 
-    <!-- ======= Header ======= -->
     <header id="header" class="fixed-top d-flex align-items-center">
         <div class="container-fluid container-xl d-flex align-items-center justify-content-lg-between">
 
-            <h1 class="logo me-auto me-lg-0"><a href="{{ url('/') }}">{{ $contactInfo?->business_name ?? 'ENTREAMIGOS' }}</a></h1>
+            <h1 class="logo me-auto me-lg-0">
+                <a href="{{ url('/') }}">
+                    <img src="{{ asset('assets/img/logo/logo-entreamigos.png') }}" class="brand-logo"
+                        alt="{{ $contactInfo?->business_name ?? 'Entreamigos' }}">
+                </a>
+            </h1>
 
             <nav id="navbar" class="navbar order-last order-lg-0">
                 <ul>
@@ -39,7 +42,6 @@
         </div>
     </header>
 
-    <!-- ======= Hero Section ======= -->
     <section id="hero" class="d-flex align-items-center">
         <div class="container position-relative text-center text-lg-start" data-aos="zoom-in" data-aos-delay="100">
             <div class="row">
@@ -57,11 +59,10 @@
                 </div>
             </div>
         </div>
-    </section><!-- End Hero -->
+    </section>
 
     <main id="main">
 
-        <!-- ======= About Section ======= -->
         <section id="about" class="about">
             <div class="container" data-aos="fade-up">
                 <div class="row">
@@ -85,9 +86,8 @@
                     </div>
                 </div>
             </div>
-        </section><!-- End About Section -->
+        </section>
 
-        <!-- ======= Seção porque nós ======= -->
         <section id="why-us" class="why-us">
             <div class="container" data-aos="fade-up">
                 <div class="section-title">
@@ -119,9 +119,8 @@
                     </div>
                 </div>
             </div>
-        </section><!-- Fim da seção Por que nós -->
+        </section>
 
-        <!-- ======= especiais Section ======= -->
         <section id="specials" class="specials">
             <div class="container" data-aos="fade-up">
                 <div class="section-title">
@@ -203,9 +202,8 @@
                     </div>
                 </div>
             </div>
-        </section><!-- End Specials Section -->
+        </section>
 
-        <!-- ======= Events Section ======= -->
         <section id="events" class="events">
             <div class="container" data-aos="fade-up">
                 <div class="section-title">
@@ -268,10 +266,8 @@
                     <div class="swiper-pagination"></div>
                 </div>
             </div>
-        </section><!-- End Events Section -->
+        </section>
 
-        <!-- ======= Book A Table Section ======= -->
-        <!-- ======= Gallery Section ======= -->
         <section id="gallery" class="gallery">
             <div class="container" data-aos="fade-up">
                 <div class="section-title">
@@ -299,9 +295,8 @@
                     @endforeach
                 </div>
             </div>
-        </section><!-- End Gallery Section -->
+        </section>
 
-        <!-- ======= Chefs Section ======= -->
         <section id="chefs" class="chefs">
             <div class="container" data-aos="fade-up">
                 <div class="section-title">
@@ -342,9 +337,8 @@
                     @endforeach
                 </div>
             </div>
-        </section><!-- End Chefs Section -->
+        </section>
 
-        <!-- ======= Contact Section ======= -->
         <section id="contact" class="contact">
             <div class="container" data-aos="fade-up">
                 <div class="section-title">
@@ -389,9 +383,8 @@
                     </div>
                 </div>
             </div>
-        </section><!-- End Contact Section -->
+        </section>
 
-        <!-- ======= Book A Table Section ======= -->
         <section id="book-a-table" class="book-a-table">
             <div class="container" data-aos="fade-up">
                 <div class="section-title">
@@ -401,11 +394,10 @@
 
                 <livewire:book-table-form />
             </div>
-        </section><!-- End Book A Table Section -->
+        </section>
 
-    </main><!-- End #main -->
+    </main>
 
-    <!-- ======= Footer ======= -->
     <footer id="footer">
         <div class="footer-top">
             <div class="container">
@@ -440,6 +432,16 @@
                             <li><i class="bx bx-chevron-right"></i> <a href="#contact">Contato</a></li>
                         </ul>
                     </div>
+
+                    <div class="col-lg-6 footer-brand-column">
+                        <div class="footer-brand-signature">
+                            <img src="{{ asset('assets/img/logo/logo-entreamigos.png') }}" class="footer-brand-logo"
+                                alt="{{ $contactInfo?->business_name ?? 'Entreamigos' }}">
+                            <div>
+                                <p>Boa comida, boa conversa,<br>bons momentos.</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -450,9 +452,9 @@
                 reservados
             </div>
             <div class="credits">
-                Desenvolvedor <a href="https://www.instagram.com/renanaragao9/" target="_blank">Renan Aragão</a>
+                Desenvolvido por AragaoLabs · <a href="https://www.instagram.com/renanaragao9/" target="_blank">Renan Aragão</a>
             </div>
         </div>
-    </footer><!-- End Footer -->
+    </footer>
 
 </x-layout>

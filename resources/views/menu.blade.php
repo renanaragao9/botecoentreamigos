@@ -6,7 +6,11 @@
 
     <header class="digital-menu-header">
         <div class="container-fluid container-xl d-flex align-items-center justify-content-between">
-            <h1 class="logo"><a href="{{ route('home') }}">{{ $businessName }}</a></h1>
+            <h1 class="logo">
+                <a href="{{ route('home') }}">
+                    <img src="{{ asset('assets/img/logo/logo-entreamigos.png') }}" class="brand-logo" alt="{{ $businessName }}">
+                </a>
+            </h1>
             <a href="{{ route('home') }}" class="book-a-table-btn">Voltar ao site</a>
         </div>
     </header>

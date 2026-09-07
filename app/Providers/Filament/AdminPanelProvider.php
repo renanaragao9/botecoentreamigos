@@ -29,6 +29,10 @@ class AdminPanelProvider extends PanelProvider
             ->id('admin')
             ->path('admin')
             ->brandName('Entreamigos')
+            ->brandLogo(fn (): ?string => request()->routeIs('filament.admin.auth.login')
+                ? asset('assets/img/logo/logo-entreamigos.png')
+                : null)
+            ->brandLogoHeight('8rem')
             ->login()
             ->colors([
                 'primary' => Color::Amber,

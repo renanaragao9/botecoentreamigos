@@ -164,7 +164,7 @@ h1, h2, h3, h4, h5, h6 {
   border-bottom: 1px solid rgba(12, 11, 9, 0.6);
   transition: all 0.5s;
   z-index: 997;
-  padding: 15px 0;
+  padding: 8px 0;
   top: 40px;
 }
 #header.header-scrolled {
@@ -187,6 +187,15 @@ h1, h2, h3, h4, h5, h6 {
 }
 #header .logo img {
   max-height: 40px;
+}
+#header .logo .brand-logo,
+.digital-menu-header .logo .brand-logo {
+  display: block;
+  width: 150px;
+  height: 70px;
+  max-height: none;
+  object-fit: cover;
+  object-position: center;
 }
 
 /*--------------------------------------------------------------
@@ -341,7 +350,7 @@ h1, h2, h3, h4, h5, h6 {
     margin-left: 10px !important;
   }
   #header {
-    padding: 12px 0;
+    padding: 6px 0;
   }
   #header .logo {
     font-size: 21px;
@@ -943,6 +952,12 @@ section {
 .digital-menu-page {
   padding-top: 0;
 }
+.digital-menu-page .menu.section-bg {
+  padding: 48px 0 56px;
+}
+.digital-menu-page .section-title {
+  padding-bottom: 26px;
+}
 @media (max-width: 576px) {
   .digital-menu-header .container-fluid {
     min-height: 64px;
@@ -952,13 +967,21 @@ section {
   .digital-menu-header .logo {
     font-size: 20px;
   }
+  #header .logo .brand-logo,
+  .digital-menu-header .logo .brand-logo {
+    width: 128px;
+    height: 64px;
+  }
   .digital-menu-header .book-a-table-btn {
     padding: 7px 12px;
     font-size: 10px;
   }
 }
 .digital-menu-category + .digital-menu-category {
-  margin-top: 65px;
+  margin-top: 46px;
+}
+.digital-menu-category {
+  padding: 0;
 }
 .digital-menu-category h2 {
   color: #cda45e;
@@ -971,6 +994,23 @@ section {
 .digital-menu-page .menu-content span {
   color: #fff;
   font-weight: 600;
+}
+.digital-menu-page .menu .menu-item {
+  margin-top: 34px;
+}
+.digital-menu-page .menu .menu-img,
+.digital-menu-page .menu .menu-image-link {
+  width: 72px;
+  height: 72px;
+}
+.digital-menu-page .menu .menu-img {
+  border-width: 4px;
+  border-color: rgba(205, 164, 94, 0.45);
+}
+.digital-menu-page .menu .menu-content,
+.digital-menu-page .menu .menu-ingredients,
+.digital-menu-page .menu .menu-allergens {
+  margin-left: 88px;
 }
 .digital-menu-page .menu-content strong {
   background: #1a1814;
@@ -990,7 +1030,8 @@ section {
   font-style: italic;
   font-size: 14px;
   font-family: "Poppins", sans-serif;
-  color: rgba(255, 255, 255, 0.5);
+  color: rgba(255, 255, 255, 0.7);
+  line-height: 1.45;
 }
 .menu .menu-allergens {
   margin: 8px 0 0 85px;
@@ -1000,15 +1041,30 @@ section {
   gap: 6px;
 }
 .menu .menu-allergens-label {
-  color: rgba(255, 255, 255, 0.55);
+  color: rgba(255, 255, 255, 0.75);
   font-size: 12px;
   font-weight: 600;
 }
 .menu .menu-allergen-icon {
-  width: 24px;
-  height: 24px;
+  width: 28px;
+  height: 28px;
   border-radius: 50%;
   object-fit: cover;
+  border: 1px solid rgba(205, 164, 94, 0.65);
+}
+@media (max-width: 767px) {
+  .digital-menu-page .menu.section-bg {
+    padding: 38px 0 46px;
+  }
+  .digital-menu-page .section-title {
+    padding-bottom: 20px;
+  }
+  .digital-menu-category + .digital-menu-category {
+    margin-top: 38px;
+  }
+  .digital-menu-page .menu .menu-item {
+    margin-top: 28px;
+  }
 }
 .menu-item-modal .modal-content {
   overflow: hidden;
@@ -1224,7 +1280,7 @@ section {
   width: 100%;
 }
 .book-a-table .php-email-form .form-group {
-  padding-bottom: 8px;
+  padding-bottom: 14px;
 }
 .book-a-table .php-email-form .validate {
   display: none;
@@ -1234,12 +1290,11 @@ section {
   font-size: 13px;
 }
 .book-a-table .php-email-form .error-message {
-  display: none;
-  color: #fff;
-  background: #ed3c0d;
-  text-align: left;
-  padding: 15px;
-  font-weight: 600;
+  display: block;
+  margin-top: 7px;
+  color: #f3a09a;
+  font-size: 13px;
+  font-weight: 500;
 }
 .book-a-table .php-email-form .error-message br + br {
   margin-top: 25px;
@@ -1270,27 +1325,67 @@ section {
   animation: animate-loading 1s linear infinite;
 }
 .book-a-table .php-email-form input, .book-a-table .php-email-form textarea {
-  border-radius: 0;
+  min-height: 50px;
+  border-radius: 6px;
   box-shadow: none;
   font-size: 14px;
-  background: #0c0b09;
-  border-color: #625b4b;
+  background: #15130f;
+  border: 1px solid rgba(205, 164, 94, 0.35);
   color: white;
+  padding: 0 15px;
+  transition: border-color 0.25s ease, box-shadow 0.25s ease, background-color 0.25s ease;
 }
 .book-a-table .php-email-form input::-moz-placeholder, .book-a-table .php-email-form textarea::-moz-placeholder {
   color: #a49b89;
 }
 .book-a-table .php-email-form input::placeholder, .book-a-table .php-email-form textarea::placeholder {
-  color: #a49b89;
+  color: rgba(218, 201, 168, 0.78);
 }
 .book-a-table .php-email-form input:focus, .book-a-table .php-email-form textarea:focus {
   border-color: #cda45e;
+  background: #1a1814;
+  box-shadow: 0 0 0 3px rgba(205, 164, 94, 0.14);
 }
 .book-a-table .php-email-form input {
-  height: 44px;
+  height: 50px;
+}
+.book-a-table .php-email-form input[type=date], .book-a-table .php-email-form input[type=time] {
+  color-scheme: dark;
+}
+.book-a-table .php-email-form input.is-invalid {
+  border-color: #c96c62;
+  background-image: none;
 }
 .book-a-table .php-email-form textarea {
-  padding: 10px 12px;
+  padding: 12px 15px;
+}
+.book-a-table .php-email-form .reservation-success {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 22px;
+  padding: 16px 18px;
+  border: 1px solid rgba(205, 164, 94, 0.55);
+  border-radius: 6px;
+  background: rgba(205, 164, 94, 0.12);
+  color: #fff;
+}
+.book-a-table .php-email-form .reservation-success i {
+  color: #cda45e;
+  font-size: 24px;
+}
+.book-a-table .php-email-form .reservation-success strong,
+.book-a-table .php-email-form .reservation-success span {
+  display: block;
+}
+.book-a-table .php-email-form .reservation-success strong {
+  color: #cda45e;
+  font-size: 15px;
+  margin-bottom: 2px;
+}
+.book-a-table .php-email-form .reservation-success span {
+  color: rgba(255, 255, 255, 0.78);
+  font-size: 14px;
 }
 .book-a-table .php-email-form button[type=button] {
   background: #cda45e;
@@ -1723,6 +1818,42 @@ section {
 }
 #footer .footer-top .footer-links ul a:hover {
   color: #cda45e;
+}
+#footer .footer-brand-column {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding-bottom: 30px;
+}
+#footer .footer-brand-signature {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 18px 24px;
+  border-left: 1px solid rgba(205, 164, 94, 0.45);
+}
+#footer .footer-brand-logo {
+  width: 200px;
+  height: 80px;
+  object-fit: cover;
+  object-position: center;
+}
+#footer .footer-brand-signature p {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.68);
+  font-size: 14px;
+  line-height: 1.55;
+}
+@media (max-width: 991px) {
+  #footer .footer-brand-column {
+    justify-content: flex-start;
+  }
+}
+@media (max-width: 576px) {
+  #footer .footer-brand-signature {
+    padding: 16px 0;
+    border-left: 0;
+  }
 }
 #footer .footer-top .footer-newsletter form {
   margin-top: 30px;
