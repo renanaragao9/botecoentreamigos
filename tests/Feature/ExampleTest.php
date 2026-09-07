@@ -49,17 +49,20 @@ class ExampleTest extends TestCase
     public function test_the_digital_menu_displays_items_grouped_by_category(): void
     {
         $category = MenuCategory::create(['name' => 'Petiscos']);
-        MenuItem::create([
+        $item = MenuItem::create([
             'menu_category_id' => $category->id,
             'name' => 'Batata frita',
-            'price' => 'R$ 20,00',
+            'price' => '20.00',
             'active' => true,
         ]);
+
+        $this->assertSame('20.00', $item->fresh()->price);
 
         $this->get(route('menu'))
             ->assertOk()
             ->assertSee('Petiscos')
             ->assertSee('Batata frita')
+            ->assertSee('glightbox menu-image-link', false)
             ->assertSee('R$ 20,00');
     }
 }

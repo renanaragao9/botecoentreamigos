@@ -850,9 +850,28 @@ section {
 }
 .menu .menu-img {
   width: 70px;
+  height: 70px;
+  box-sizing: border-box;
   border-radius: 50%;
   float: left;
   border: 5px solid rgba(255, 255, 255, 0.2);
+  object-fit: cover;
+  object-position: center;
+}
+.menu .menu-image-link {
+  display: block;
+  width: 70px;
+  height: 70px;
+  float: left;
+  border-radius: 50%;
+}
+.menu .menu-image-link .menu-img {
+  display: block;
+  float: none;
+}
+.menu .menu-image-link:focus-visible {
+  outline: 2px solid #cda45e;
+  outline-offset: 3px;
 }
 .menu .menu-content {
   margin-left: 85px;
@@ -969,6 +988,28 @@ section {
   font-size: 14px;
   font-family: "Poppins", sans-serif;
   color: rgba(255, 255, 255, 0.5);
+}
+.digital-menu-page .menu-content .menu-price {
+  background: #1a1814;
+  position: relative;
+  z-index: 3;
+  padding-left: 10px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.digital-menu-page .menu-content .menu-price-old {
+  color: rgba(255, 255, 255, 0.4);
+  font-weight: 400;
+  padding: 0;
+}
+.menu .menu-content strong.menu-price-promo {
+  background: #1a1814;
+  color: #cda45e;
+  font-weight: 600;
+  padding: 0;
+  white-space: nowrap;
+  float: none;
 }
 
 /*--------------------------------------------------------------

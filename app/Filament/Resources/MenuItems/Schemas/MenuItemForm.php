@@ -27,18 +27,27 @@ class MenuItemForm
                     ->maxLength(255),
                 TextInput::make('price')
                     ->label('Preço')
+                    ->numeric()
                     ->required()
-                    ->maxLength(255)
-                    ->placeholder('R$ 0,00'),
+                    ->minValue(0)
+                    ->step(0.01)
+                    ->prefix('R$'),
+                TextInput::make('price_promotional')
+                    ->label('Preço promocional')
+                    ->numeric()
+                    ->minValue(0)
+                    ->step(0.01)
+                    ->prefix('R$'),
                 Toggle::make('active')
                     ->label('Ativo (aparece no site)')
                     ->default(true),
                 FileUpload::make('image')
                     ->label('Foto do prato')
+                    ->disk('public')
+                    ->visibility('public')
                     ->image()
                     ->imageEditor()
                     ->directory('menu')
-                    ->required()
                     ->columnSpanFull(),
                 Textarea::make('description')
                     ->label('Descrição')

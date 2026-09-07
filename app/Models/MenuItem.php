@@ -10,9 +10,13 @@ class MenuItem extends Model
 {
     use HasFallbackImage;
 
-    protected $fillable = ['menu_category_id', 'name', 'price', 'description', 'image', 'order', 'active'];
+    protected $fillable = ['menu_category_id', 'name', 'price', 'price_promotional', 'description', 'image', 'order', 'active'];
 
-    protected $casts = ['active' => 'boolean'];
+    protected $casts = [
+        'active' => 'boolean',
+        'price' => 'decimal:2',
+        'price_promotional' => 'decimal:2',
+    ];
 
     protected static function booted(): void
     {

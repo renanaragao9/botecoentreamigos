@@ -26,9 +26,20 @@
                             <div class="row">
                                 @foreach ($category->items as $item)
                                     <div class="col-lg-6 menu-item">
-                                        <img src="{{ Storage::url($item->image) }}" class="menu-img" alt="{{ $item->name }}">
+                                        <a href="{{ Storage::disk('public')->url($item->image) }}" class="glightbox menu-image-link"
+                                            data-gallery="menu-gallery" aria-label="Ampliar foto de {{ $item->name }}">
+                                            <img src="{{ Storage::disk('public')->url($item->image) }}" class="menu-img" alt="{{ $item->name }}">
+                                        </a>
                                         <div class="menu-content">
-                                            <span>{{ $item->name }}</span><strong>{{ $item->price }}</strong>
+                                            <span>{{ $item->name }}</span>
+                                            @if ($item->price_promotional)
+                                                <span class="menu-price">
+                                                    <s class="menu-price-old">R$ {{ number_format((float) $item->price, 2, ',', '.') }}</s>
+                                                    <strong class="menu-price-promo">R$ {{ number_format((float) $item->price_promotional, 2, ',', '.') }}</strong>
+                                                </span>
+                                            @else
+                                                <strong>R$ {{ number_format((float) $item->price, 2, ',', '.') }}</strong>
+                                            @endif
                                         </div>
                                         @if ($item->description)
                                             <div class="menu-ingredients">{{ $item->description }}</div>

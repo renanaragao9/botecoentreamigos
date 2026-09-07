@@ -24,12 +24,13 @@
                 <ul>
                     <li><a class="nav-link scrollto active" href="#hero">Inicio</a></li>
                     <li><a class="nav-link scrollto" href="#about">Sobre</a></li>
-                    <li><a class="nav-link" href="{{ route('menu') }}">Cardápio</a></li>
                     <li><a class="nav-link scrollto" href="#specials">Especiais</a></li>
                     <li><a class="nav-link scrollto" href="#events">Eventos</a></li>
-                    <li><a class="nav-link scrollto" href="#chefs">Chefs</a></li>
                     <li><a class="nav-link scrollto" href="#gallery">Galeria</a></li>
+                    <li><a class="nav-link scrollto" href="#chefs">Chefs</a></li>
                     <li><a class="nav-link scrollto" href="#contact">Contato</a></li>
+                    <li><a class="nav-link scrollto" href="#book-a-table">Reserva</a></li>
+                    <li><a class="nav-link" href="{{ route('menu') }}">Cardápio</a></li>
                 </ul>
                 <i class="bi bi-list mobile-nav-toggle"></i>
             </nav>
@@ -270,59 +271,6 @@
         </section><!-- End Events Section -->
 
         <!-- ======= Book A Table Section ======= -->
-        <section id="book-a-table" class="book-a-table">
-            <div class="container" data-aos="fade-up">
-                <div class="section-title">
-                    <h2>Reserva</h2>
-                    <p>Reserve seu evento</p>
-                </div>
-
-                <livewire:book-table-form />
-            </div>
-        </section><!-- End Book A Table Section -->
-
-        <!-- ======= Testimonials Section ======= -->
-        <section id="testimonials" class="testimonials section-bg">
-            <div class="container" data-aos="fade-up">
-                <div class="section-title">
-                    <h2>Comentarios</h2>
-                    <p>O que estão dizendo sobre nós</p>
-                </div>
-
-                <div class="testimonials-slider swiper" data-aos="fade-up" data-aos-delay="100">
-                    <div class="swiper-wrapper">
-
-                        @php
-                            $testimonials = [
-                                ['name' => 'Amanda Portela', 'image' => 'testimonials/mulher.jpg', 'source' => 'Google Avaliação', 'text' => 'Nossa experiência foi maravilhosa. Música boa, boa gastronomia, bom preço e bom atendimento. Fomos super bem atendidos pela jamile. Carismática, dava boas dicas do que pedir e muito atenciosa no atendimento. O sabor da comida estava sensacional, vale realmente a pena. A variedade dos drinks é surreal, mas me apaixonei pelo drink lagoa azul.. PEÇAM , rsrs. Pretendemos voltar mais vezes, com certeza'],
-                                ['name' => 'Janaina Rabelo', 'image' => 'testimonials/janaina.jpeg', 'source' => 'Google Avaliação', 'text' => 'Após indicação do genro, eu e meu esposo fomos conhecer o Boteco entreamigos. Fomos numa sexta a noite, estava lotado, fomos muito bem recebidos e fizemos a opção de sentarmos do lado de fora. Comemos um espeto, excelente, muito bom, farto e com um preço ótimo. Tomamos refrigerante e cerveja bohemia bem gelado. Voltamos na quinta, era aniversário do meu esposo, comemos feijao verde, dessa vez nos sentamos lá dentro. Excelente feijao verde, preço justo p duas pessoas, ótimo atendimento, enfim um local muito agradável com excelentes opções, preços bons e ótimo atendimento. Adoreiii!'],
-                                ['name' => 'Edivan Filho', 'image' => 'testimonials/edvan.jpeg', 'source' => 'Google Avaliação', 'text' => 'Comemorei meu aniversário com amigos no boteco entramigos,que otimo de boteco,comida maravilhosa, lugar aconchegante,os funcionários são educados! No final do jantar ainda me fizeram uma surpresa,cantando parabéns com um bolo tanto quanto estranho kkk! Super Recomendo! Procurem a atendente dudu uma simpatia e super educada!!'],
-                                ['name' => 'Bruno Tavares', 'image' => 'testimonials/bruno.jpeg', 'source' => 'Google Avaliação', 'text' => 'Bom atendimento. Preços razoáveis. Primeira visita no local e me agradou. Não cobram 10%.'],
-                                ['name' => 'João Alves Larson', 'image' => 'testimonials/testimonials-5.jpg', 'source' => 'Google Avaliação', 'text' => 'Muito bom caipirinha, espeto de carne, queijo e pão de alho e cerveja gelada..'],
-                            ];
-                        @endphp
-                        @foreach ($testimonials as $t)
-                            <div class="swiper-slide">
-                                <div class="testimonial-item">
-                                    <p>
-                                        <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-                                        {{ $t['text'] }}
-                                        <i class="bx bxs-quote-alt-right quote-icon-right"></i>
-                                    </p>
-                                    <img src="{{ asset('assets/img/'.$t['image']) }}"
-                                        class="testimonial-img" alt="{{ $t['name'] }}">
-                                    <h3>{{ $t['name'] }}</h3>
-                                    <h4>{{ $t['source'] }}</h4>
-                                </div>
-                            </div>
-                        @endforeach
-
-                    </div>
-                    <div class="swiper-pagination"></div>
-                </div>
-            </div>
-        </section><!-- End Testimonials Section -->
-
         <!-- ======= Gallery Section ======= -->
         <section id="gallery" class="gallery">
             <div class="container" data-aos="fade-up">
@@ -442,6 +390,18 @@
                 </div>
             </div>
         </section><!-- End Contact Section -->
+
+        <!-- ======= Book A Table Section ======= -->
+        <section id="book-a-table" class="book-a-table">
+            <div class="container" data-aos="fade-up">
+                <div class="section-title">
+                    <h2>Reserva</h2>
+                    <p>Reserve seu evento</p>
+                </div>
+
+                <livewire:book-table-form />
+            </div>
+        </section><!-- End Book A Table Section -->
 
     </main><!-- End #main -->
 
