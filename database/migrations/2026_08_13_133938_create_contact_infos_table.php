@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('whatsapp')->nullable();
             $table->string('instagram_url')->nullable();
             $table->string('facebook_url')->nullable();
-            $table->string('map_embed_url')->nullable();
+            $table->text('map_embed_url')->nullable();
             $table->string('seo_title')->nullable();
             $table->text('seo_description')->nullable();
             $table->timestamps();

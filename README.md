@@ -8,8 +8,8 @@ Site institucional completo para um bar/restaurante, construído com **Laravel 1
 
 ### 🖥️ Site público (landing page)
 
-- Página única com seções completas: **hero**, **sobre**, **por que nos escolher**, **cardápio**, **pratos especiais**, **eventos**, **depoimentos**, **galeria de fotos**, **chefs** e **contato**
-- Cardápio organizado por categorias (bebidas, petiscos, pratos...) com itens, preços, descrição e foto
+- Página única (home) com seções fixas (mocadas direto no blade, sem passar por banco/painel): **hero**, **sobre**, **por que nos escolher**, **pratos especiais**, **eventos**, **depoimentos**, **galeria de fotos** e **chefs** — só **contato** vem do banco
+- Página de **cardápio** separada (`/cardapio`), organizado por categorias (bebidas, petiscos, pratos...) com itens, preços, descrição e foto
 - **Formulário de reserva de mesas / agendamento de eventos** em Livewire com:
     - Validação em tempo real e mensagens em português
     - Envio por e-mail via Mailable
@@ -19,13 +19,13 @@ Site institucional completo para um bar/restaurante, construído com **Laravel 1
 ### ⚙️ Painel administrativo (Filament)
 
 - Acesso em `/admin` com login protegido
-- 11 resources para gerenciar todo o conteúdo do site: categorias e itens do cardápio, especiais, eventos, features, seção "sobre", itens "por que nos escolher", depoimentos, galeria, chefs e informações de contato
+- 5 resources: categorias e itens do cardápio, reservas (bookings), usuários e informações de contato. As seções fixas da home (sobre, especiais, eventos, depoimentos, galeria, chefs) não passam mais pelo painel — são texto/imagem estático no blade
 - **Ordenação automática**: novos registros recebem a próxima posição de exibição sem intervenção manual (trait `SetsNextOrder`)
 - Formulários e tabelas organizados em arquivos separados (arquitetura Filament modular)
 
 ### 🎲 Dados de demonstração
 
-- Seeders completos com conteúdo realista em português (cardápio, eventos, depoimentos, chefs, galeria)
+- Seeders completos com conteúdo realista em português (cardápio, contato, admin)
 - Usuário admin criado automaticamente
 
 ---
@@ -82,19 +82,19 @@ php artisan serve
 app/
 ├── Filament/
 │   ├── Concerns/SetsNextOrder.php        # Ordenação automática de registros
-│   └── Resources/                        # 11 resources do painel admin
+│   └── Resources/                        # 5 resources do painel admin (cardápio, bookings, users, contato)
 │       └── MenuItems/                    # Ex.: Resource + Schemas + Pages + Tables
-├── Http/Controllers/HomeController.php   # Carrega os dados da landing page
+├── Http/Controllers/HomeController.php   # Carrega só o contato; resto da home é fixo no blade
 ├── Livewire/BookTableForm.php            # Formulário de reserva (validação + e-mail + WhatsApp)
 ├── Mail/BookTableMail.php                # E-mail de confirmação de reserva
-└── Models/                               # 13 models (menu, eventos, galeria, chefs...)
+└── Models/                               # 6 models (menu, booking, contato, user)
 
 database/
-├── migrations/                           # 15 migrations
-└── seeders/                              # 10 seeders com dados de demonstração
+├── migrations/                           # 7 migrations
+└── seeders/                              # 5 seeders com dados de demonstração
 
 resources/views/
-├── home.blade.php                        # Landing page (438 linhas, seções dinâmicas)
+├── home.blade.php                        # Landing page (498 linhas, seções mocadas + contato dinâmico)
 ├── components/layout.blade.php           # Layout base
 └── livewire/book-table-form.blade.php    # View do formulário de reserva
 ```

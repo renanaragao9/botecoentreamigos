@@ -65,22 +65,21 @@
             <div class="container" data-aos="fade-up">
                 <div class="row">
                     <div class="col-lg-6 order-1 order-lg-2" data-aos="zoom-in" data-aos-delay="100">
-                        @if ($aboutSection)
-                            <div class="about-img">
-                                <img src="{{ Storage::url($aboutSection->image) }}" alt="Salão do bar Entreamigos">
-                            </div>
-                        @endif
+                        <div class="about-img">
+                            <img src="{{ asset('assets/img/barrrr.jpeg') }}" alt="Salão do bar Entreamigos">
+                        </div>
                     </div>
                     <div class="col-lg-6 pt-4 pt-lg-0 order-2 order-lg-1 content">
-                        <h3>{{ $aboutSection?->title }}</h3>
-                        <p class="fst-italic">{{ $aboutSection?->intro_text }}</p>
+                        <h3>Conheça o que sabemos fazer de melhor.</h3>
+                        <p class="fst-italic">Todos os nossos ingredientes foram pensados para levar ao melhor no seu prato. Aqui você tem vantagens de:</p>
                         <ul>
-                            @foreach ($aboutFeatures as $feature)
-                                <li><i class="bi bi-check-circle"></i>{{ $feature->text }}</li>
-                            @endforeach
+                            <li><i class="bi bi-check-circle"></i>Entreamigos, um lugar para o melhor encontro em família.</li>
+                            <li><i class="bi bi-check-circle"></i>Seu gosto é atendido aqui.</li>
+                            <li><i class="bi bi-check-circle"></i>Ambiente animado e divertido</li>
+                            <li><i class="bi bi-check-circle"></i>Dudu</li>
                         </ul>
                         <p>
-                            {{ $aboutSection?->closing_text }}
+                            Dias de jogos animados e divertidos, para você torcer para seu time
                         </p>
                     </div>
                 </div>
@@ -96,15 +95,27 @@
                 </div>
 
                 <div class="row">
-                    @foreach ($whyUsItems as $item)
-                        <div class="col-lg-4 @if (!$loop->first) mt-4 mt-lg-0 @endif">
-                            <div class="box" data-aos="zoom-in" data-aos-delay="{{ 100 * ($loop->index + 1) }}">
-                                <span>{{ str_pad($loop->iteration, 2, '0', STR_PAD_LEFT) }}</span>
-                                <h4>{{ $item->title }}</h4>
-                                <p>{{ $item->description }}</p>
-                            </div>
+                    <div class="col-lg-4">
+                        <div class="box" data-aos="zoom-in" data-aos-delay="100">
+                            <span>01</span>
+                            <h4>Ambiente</h4>
+                            <p>Temos um ótimo ambiente para quem procura um lugar tranquilo e divertido</p>
                         </div>
-                    @endforeach
+                    </div>
+                    <div class="col-lg-4 mt-4 mt-lg-0">
+                        <div class="box" data-aos="zoom-in" data-aos-delay="200">
+                            <span>02</span>
+                            <h4>Encontro</h4>
+                            <p>Lugar perfeito para você que quer organizar encontros entre amigos ou em família</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 mt-4 mt-lg-0">
+                        <div class="box" data-aos="zoom-in" data-aos-delay="300">
+                            <span>03</span>
+                            <h4>Jogos</h4>
+                            <p>Venha torcer para o seu time de coração em dias de jogos com o melhor espeto da região</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section><!-- Fim da seção Por que nós -->
@@ -120,34 +131,73 @@
                 <div class="row" data-aos="fade-up" data-aos-delay="100">
                     <div class="col-lg-3">
                         <ul class="nav nav-tabs flex-column">
-                            @foreach ($specials as $special)
-                                <li class="nav-item"><a class="nav-link @if ($loop->first) active show @endif"
-                                        data-bs-toggle="tab" href="#tab-{{ $special->id }}">{{ $special->title }}</a>
-                                </li>
-                            @endforeach
+                            <li class="nav-item"><a class="nav-link active show" data-bs-toggle="tab" href="#tab-1">Feijão verde</a></li>
+                            <li class="nav-item"><a class="nav-link" data-bs-toggle="tab" href="#tab-2">Carne do sol c/ Macaxeira</a></li>
+                            <li class="nav-item"><a class="nav-link" data-bs-toggle="tab" href="#tab-3">Trinchado</a></li>
+                            <li class="nav-item"><a class="nav-link" data-bs-toggle="tab" href="#tab-4">Costelinha suína</a></li>
+                            <li class="nav-item"><a class="nav-link" data-bs-toggle="tab" href="#tab-5">Camarão Alho e Óleo</a></li>
                         </ul>
                     </div>
                     <div class="col-lg-9 mt-4 mt-lg-0">
                         <div class="tab-content">
-                            @foreach ($specials as $special)
-                                <div class="tab-pane @if ($loop->first) active show @endif" id="tab-{{ $special->id }}">
-                                    <div class="row">
-                                        <div class="col-lg-8 details order-2 order-lg-1">
-                                            <h3>{{ $special->title }}</h3>
-                                            @if ($special->subtitle)
-                                                <p class="fst-italic">{{ $special->subtitle }}</p>
-                                            @endif
-                                            @foreach (explode("\n\n", $special->description) as $paragraph)
-                                                <p>{{ $paragraph }}</p>
-                                            @endforeach
-                                        </div>
-                                        <div class="col-lg-4 text-center order-1 order-lg-2">
-                                            <img src="{{ Storage::url($special->image) }}" alt=""
-                                                class="img-fluid">
-                                        </div>
+                            <div class="tab-pane active show" id="tab-1">
+                                <div class="row">
+                                    <div class="col-lg-8 details order-2 order-lg-1">
+                                        <h3>Feijão verde</h3>
+                                        <p class="fst-italic">Somos especialistas quando o assunto é feijão verde.</p>
+                                        <p>Na literatura nao há consenso sobre o surgimento do feijão verde. Diverge-se se é do Peru ou da África Tropical, mas o fato é que o feijão verde que melhor se adaptou foi no nordeste feito com queijo, creme de leite e verduras da terra</p>
+                                    </div>
+                                    <div class="col-lg-4 text-center order-1 order-lg-2">
+                                        <img src="{{ asset('assets/img/feijao.jpeg') }}" alt="" class="img-fluid">
                                     </div>
                                 </div>
-                            @endforeach
+                            </div>
+                            <div class="tab-pane" id="tab-2">
+                                <div class="row">
+                                    <div class="col-lg-8 details order-2 order-lg-1">
+                                        <h3>Carne do sol c/ Macaxeira</h3>
+                                        <p>A técnica começou a ser usada no Brasil no século 17, segundo Costa. Ela mistura práticas dos índios, que secavam as carnes no fogo, e dos portugueses, que trouxeram o costume de usar o sal como conservante. Hoje em dia, ainda é usada no interior de estados do Nordeste, onde há um sol pra cada um.</p>
+                                    </div>
+                                    <div class="col-lg-4 text-center order-1 order-lg-2">
+                                        <img src="{{ asset('assets/img/carne-do-sol.jpeg') }}" alt="" class="img-fluid">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tab-pane" id="tab-3">
+                                <div class="row">
+                                    <div class="col-lg-8 details order-2 order-lg-1">
+                                        <h3>Trinchado</h3>
+                                        <p>O trinchado surgiu na região sul, na cidade de Santo Antônio da Patrulha com a abundância na carne bovina são feito com filé na brasa acompanhado com um molho barbecue</p>
+                                    </div>
+                                    <div class="col-lg-4 text-center order-1 order-lg-2">
+                                        <img src="{{ asset('assets/img/trinchado.jpeg') }}" alt="" class="img-fluid">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tab-pane" id="tab-4">
+                                <div class="row">
+                                    <div class="col-lg-8 details order-2 order-lg-1">
+                                        <h3>Costelinha suína</h3>
+                                        <p>Esse prato surgiu por uma fatalidade econômica que reuniu dois elementos básicos da produção rio-grandense: o porco e o charque. O estado passou a ser um grande produtor desses alimentos, sendo que o charque é feito por meio de técnicas trazidas por uma família do Ceará.</p>
+                                        <p>É um produto pré-cozido a base de pernil ou lombo suíno, com baixa taxa de gordura, a carne suína é cortada em mantas para garantir um produto mais homogêneo.</p>
+                                    </div>
+                                    <div class="col-lg-4 text-center order-1 order-lg-2">
+                                        <img src="{{ asset('assets/img/costelinha.jpg') }}" alt="" class="img-fluid">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tab-pane" id="tab-5">
+                                <div class="row">
+                                    <div class="col-lg-8 details order-2 order-lg-1">
+                                        <h3>Camarão Alho e Óleo</h3>
+                                        <p>Camarão alho e óleo é um prato típico do Ceará, mas que encontrou morada por todo o país, inclusive onde não há mar, como é o caso de Curitiba. Sem segredo nenhum, rápido e tentador. Sentir o sabor rasgante do alho e rebater com cerveja gelada, não tem preço.</p>
+                                        <p>Camarão é perfeito para petiscar. Ao bafo, à milanesa, em bolinhos, abraçadinho…seja como for, combina perfeitamente com cerveja e amigos.</p>
+                                    </div>
+                                    <div class="col-lg-4 text-center order-1 order-lg-2">
+                                        <img src="{{ asset('assets/img/camarao.jpeg') }}" alt="" class="img-fluid">
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -164,27 +214,55 @@
 
                 <div class="events-slider swiper" data-aos="fade-up" data-aos-delay="100">
                     <div class="swiper-wrapper">
-                        @foreach ($events as $event)
-                            <div class="swiper-slide">
-                                <div class="row event-item">
-                                    <div class="col-lg-6">
-                                        <img src="{{ Storage::url($event->image) }}" class="img-fluid"
-                                            alt="{{ $event->title }} no Entreamigos">
-                                    </div>
-                                    <div class="col-lg-6 pt-4 pt-lg-0 content">
-                                        <h3>{{ $event->title }}</h3>
-                                        <p class="fst-italic">
-                                            {{ $event->description }}
-                                        </p>
-                                        <ul>
-                                            @foreach ($event->features as $feature)
-                                                <li><i class="bi bi-check-circled"></i> {{ $feature->text }}</li>
-                                            @endforeach
-                                        </ul>
-                                    </div>
+                        <div class="swiper-slide">
+                            <div class="row event-item">
+                                <div class="col-lg-6">
+                                    <img src="{{ asset('assets/img/aniversario.jpeg') }}" class="img-fluid" alt="Aniversários no Entreamigos">
+                                </div>
+                                <div class="col-lg-6 pt-4 pt-lg-0 content">
+                                    <h3>Aniversários</h3>
+                                    <p class="fst-italic">Venha comemorar seu aniversario no entreamigos, aqui você terá diversão alegria e poderár curtir muito o seu grande dia!!</p>
+                                    <ul>
+                                        <li><i class="bi bi-check-circled"></i> Reserva de mesa para até 20 pessoas.</li>
+                                        <li><i class="bi bi-check-circled"></i> Lugar de facíl acesso e tranquilo.</li>
+                                        <li><i class="bi bi-check-circled"></i> Aniversariantes ganham brindes.</li>
+                                        <li><i class="bi bi-check-circled"></i> Confira as nossas condições.</li>
+                                    </ul>
                                 </div>
                             </div>
-                        @endforeach
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="row event-item">
+                                <div class="col-lg-6">
+                                    <img src="{{ asset('assets/img/amigos.jpeg') }}" class="img-fluid" alt="Encontro entre amigos no Entreamigos">
+                                </div>
+                                <div class="col-lg-6 pt-4 pt-lg-0 content">
+                                    <h3>Encontro entre amigos</h3>
+                                    <p class="fst-italic">Junte seus amigos e venha se divertir!!!</p>
+                                    <ul>
+                                        <li><i class="bi bi-check-circled"></i> Reserve uma mesa para ate 15 pessoas.</li>
+                                        <li><i class="bi bi-check-circled"></i> Facil acesso e tranquilo.</li>
+                                        <li><i class="bi bi-check-circled"></i> Confira as nossas condições.</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="row event-item">
+                                <div class="col-lg-6">
+                                    <img src="{{ asset('assets/img/casal.jpeg') }}" class="img-fluid" alt="Jantar no Entreamigos">
+                                </div>
+                                <div class="col-lg-6 pt-4 pt-lg-0 content">
+                                    <h3>Jantar</h3>
+                                    <p class="fst-italic">Um otimo lugar para aquele seu encontro romantico!!</p>
+                                    <ul>
+                                        <li><i class="bi bi-check-circled"></i> Reserve uma mesa.</li>
+                                        <li><i class="bi bi-check-circled"></i> Facil acesso e tranquilo.</li>
+                                        <li><i class="bi bi-check-circled"></i> Confira as nossas condições.</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                     <div class="swiper-pagination"></div>
                 </div>
@@ -214,18 +292,27 @@
                 <div class="testimonials-slider swiper" data-aos="fade-up" data-aos-delay="100">
                     <div class="swiper-wrapper">
 
+                        @php
+                            $testimonials = [
+                                ['name' => 'Amanda Portela', 'image' => 'testimonials/mulher.jpg', 'source' => 'Google Avaliação', 'text' => 'Nossa experiência foi maravilhosa. Música boa, boa gastronomia, bom preço e bom atendimento. Fomos super bem atendidos pela jamile. Carismática, dava boas dicas do que pedir e muito atenciosa no atendimento. O sabor da comida estava sensacional, vale realmente a pena. A variedade dos drinks é surreal, mas me apaixonei pelo drink lagoa azul.. PEÇAM , rsrs. Pretendemos voltar mais vezes, com certeza'],
+                                ['name' => 'Janaina Rabelo', 'image' => 'testimonials/janaina.jpeg', 'source' => 'Google Avaliação', 'text' => 'Após indicação do genro, eu e meu esposo fomos conhecer o Boteco entreamigos. Fomos numa sexta a noite, estava lotado, fomos muito bem recebidos e fizemos a opção de sentarmos do lado de fora. Comemos um espeto, excelente, muito bom, farto e com um preço ótimo. Tomamos refrigerante e cerveja bohemia bem gelado. Voltamos na quinta, era aniversário do meu esposo, comemos feijao verde, dessa vez nos sentamos lá dentro. Excelente feijao verde, preço justo p duas pessoas, ótimo atendimento, enfim um local muito agradável com excelentes opções, preços bons e ótimo atendimento. Adoreiii!'],
+                                ['name' => 'Edivan Filho', 'image' => 'testimonials/edvan.jpeg', 'source' => 'Google Avaliação', 'text' => 'Comemorei meu aniversário com amigos no boteco entramigos,que otimo de boteco,comida maravilhosa, lugar aconchegante,os funcionários são educados! No final do jantar ainda me fizeram uma surpresa,cantando parabéns com um bolo tanto quanto estranho kkk! Super Recomendo! Procurem a atendente dudu uma simpatia e super educada!!'],
+                                ['name' => 'Bruno Tavares', 'image' => 'testimonials/bruno.jpeg', 'source' => 'Google Avaliação', 'text' => 'Bom atendimento. Preços razoáveis. Primeira visita no local e me agradou. Não cobram 10%.'],
+                                ['name' => 'João Alves Larson', 'image' => 'testimonials/testimonials-5.jpg', 'source' => 'Google Avaliação', 'text' => 'Muito bom caipirinha, espeto de carne, queijo e pão de alho e cerveja gelada..'],
+                            ];
+                        @endphp
                         @foreach ($testimonials as $t)
                             <div class="swiper-slide">
                                 <div class="testimonial-item">
                                     <p>
                                         <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-                                        {{ $t->text }}
+                                        {{ $t['text'] }}
                                         <i class="bx bxs-quote-alt-right quote-icon-right"></i>
                                     </p>
-                                    <img src="{{ Storage::url($t->image) }}"
-                                        class="testimonial-img" alt="{{ $t->name }}">
-                                    <h3>{{ $t->name }}</h3>
-                                    <h4>{{ $t->source }}</h4>
+                                    <img src="{{ asset('assets/img/'.$t['image']) }}"
+                                        class="testimonial-img" alt="{{ $t['name'] }}">
+                                    <h3>{{ $t['name'] }}</h3>
+                                    <h4>{{ $t['source'] }}</h4>
                                 </div>
                             </div>
                         @endforeach
@@ -251,13 +338,13 @@
 
             <div class="container-fluid" data-aos="fade-up" data-aos-delay="100">
                 <div class="row g-0">
-                    @foreach ($galleryImages as $image)
+                    @foreach (['img1.jpeg', 'img2.jpeg', 'img3.jpeg', 'img4.jpeg', 'img5.jpeg', 'img6.jpeg', 'img7.jpeg', 'img8.jpeg'] as $image)
                         <div class="col-lg-3 col-md-4">
                             <div class="gallery-item">
-                                <a href="{{ Storage::url($image->image) }}"
+                                <a href="{{ asset('assets/img/gallery/'.$image) }}"
                                     class="gallery-lightbox" data-gall="gallery-item">
-                                    <img src="{{ Storage::url($image->image) }}"
-                                        alt="{{ $image->caption ?? 'Foto do boteco Entreamigos' }}" class="img-fluid">
+                                    <img src="{{ asset('assets/img/gallery/'.$image) }}"
+                                        alt="Foto do boteco Entreamigos" class="img-fluid">
                                 </a>
                             </div>
                         </div>
@@ -275,22 +362,29 @@
                 </div>
 
                 <div class="row">
-                    @foreach ($chefs as $chef)
+                    @php
+                        $chefs = [
+                            ['name' => 'Nice Sousa', 'image' => 'chefs/chef.jpeg', 'facebook_url' => 'https://www.facebook.com/nice.rabelo', 'instagram_url' => 'https://www.instagram.com/_nicerabelo/'],
+                            ['name' => 'Elizete Rabelo', 'image' => 'chefs/asdasd.jpeg', 'facebook_url' => 'https://www.facebook.com/profile.php?id=100005592165935', 'instagram_url' => 'https://www.instagram.com/elizeterabeo/'],
+                            ['name' => 'Franci', 'image' => 'chefs/franci.jpeg', 'facebook_url' => null, 'instagram_url' => null],
+                        ];
+                    @endphp
+                    @foreach ($chefs as $i => $chef)
                         <div class="col-lg-4 col-md-6">
-                            <div class="member" data-aos="zoom-in" data-aos-delay="{{ 100 * ($loop->index + 1) }}">
-                                <img src="{{ Storage::url($chef->image) }}" class="img-fluid"
-                                    alt="{{ $chef->name }}">
+                            <div class="member" data-aos="zoom-in" data-aos-delay="{{ 100 * ($i + 1) }}">
+                                <img src="{{ asset('assets/img/'.$chef['image']) }}" class="img-fluid"
+                                    alt="{{ $chef['name'] }}">
                                 <div class="member-info">
                                     <div class="member-info-content">
-                                        <h4>{{ $chef->name }}</h4>
+                                        <h4>{{ $chef['name'] }}</h4>
                                     </div>
                                     <div class="social">
-                                        @if ($chef->facebook_url)
-                                            <a href="{{ $chef->facebook_url }}" target="_blank"><i
+                                        @if ($chef['facebook_url'])
+                                            <a href="{{ $chef['facebook_url'] }}" target="_blank"><i
                                                     class="bi bi-facebook"></i></a>
                                         @endif
-                                        @if ($chef->instagram_url)
-                                            <a href="{{ $chef->instagram_url }}" target="_blank"><i
+                                        @if ($chef['instagram_url'])
+                                            <a href="{{ $chef['instagram_url'] }}" target="_blank"><i
                                                     class="bi bi-instagram"></i></a>
                                         @endif
                                     </div>
