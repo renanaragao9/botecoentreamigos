@@ -29,4 +29,5 @@ RUN composer dump-autoload --optimize
 EXPOSE 7000
 CMD php -r "(new PDO('mysql:host='.getenv('DB_HOST'), getenv('DB_USERNAME'), getenv('DB_PASSWORD')))->exec('CREATE DATABASE IF NOT EXISTS '.getenv('DB_DATABASE'));" \
     && php artisan migrate --force \
+    && php artisan storage:link \
     && php artisan serve --host=0.0.0.0 --port=7000
