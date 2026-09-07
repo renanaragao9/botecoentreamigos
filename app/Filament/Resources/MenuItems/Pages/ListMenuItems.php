@@ -10,6 +10,8 @@ class ListMenuItems extends ListRecords
 {
     protected static string $resource = MenuItemResource::class;
 
+    protected static ?string $title = 'Itens do cardápio';
+
     protected function getHeaderActions(): array
     {
         return [

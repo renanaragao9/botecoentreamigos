@@ -17,7 +17,7 @@ class HomeController extends Controller
     public function menu()
     {
         return view('menu', [
-            'menuCategories' => MenuCategory::with('items')->get(),
+            'menuCategories' => MenuCategory::with('items.allergenGuides')->get(),
             'contactInfo' => ContactInfo::first(),
         ]);
     }

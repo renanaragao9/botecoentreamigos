@@ -23,7 +23,9 @@ class MenuItemsTable
             ->columns([
                 TextColumn::make('name')->label('Nome')->searchable(),
                 TextColumn::make('category.name')->label('Categoria')->badge(),
-                TextColumn::make('price')->label('Preço'),
+                TextColumn::make('allergenGuides.name')->label('Alérgenos')->badge()->separator(',')->placeholder('—'),
+                TextColumn::make('price')->label('Preço')->money('BRL', locale: 'pt_BR'),
+                TextColumn::make('price_promotional')->label('Preço promocional')->money('BRL', locale: 'pt_BR')->placeholder('—'),
                 IconColumn::make('active')->label('Ativo')->boolean(),
             ])
             ->filters([
