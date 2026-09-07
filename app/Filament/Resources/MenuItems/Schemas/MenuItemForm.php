@@ -21,6 +21,12 @@ class MenuItemForm
                     ->options(fn () => MenuCategory::query()->pluck('name', 'id'))
                     ->required()
                     ->searchable(),
+                Select::make('allergenGuides')
+                    ->label('Alérgenos')
+                    ->relationship('allergenGuides', 'name')
+                    ->multiple()
+                    ->searchable()
+                    ->preload(),
                 TextInput::make('name')
                     ->label('Nome')
                     ->required()

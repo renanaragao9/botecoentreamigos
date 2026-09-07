@@ -862,8 +862,11 @@ section {
   display: block;
   width: 70px;
   height: 70px;
+  padding: 0;
   float: left;
+  border: 0;
   border-radius: 50%;
+  background: transparent;
 }
 .menu .menu-image-link .menu-img {
   display: block;
@@ -988,6 +991,77 @@ section {
   font-size: 14px;
   font-family: "Poppins", sans-serif;
   color: rgba(255, 255, 255, 0.5);
+}
+.menu .menu-allergens {
+  margin: 8px 0 0 85px;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.menu .menu-allergens-label {
+  color: rgba(255, 255, 255, 0.55);
+  font-size: 12px;
+  font-weight: 600;
+}
+.menu .menu-allergen-icon {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+.menu-item-modal .modal-content {
+  overflow: hidden;
+  border: 1px solid rgba(205, 164, 94, 0.35);
+  background: #1a1814;
+  color: #fff;
+}
+.menu-item-modal .modal-header {
+  border-bottom-color: rgba(255, 255, 255, 0.12);
+}
+.menu-item-modal .modal-title {
+  color: #cda45e;
+  font-family: "Playfair Display", serif;
+  font-size: 24px;
+}
+.menu-item-modal .btn-close {
+  filter: invert(1);
+}
+.menu-item-modal-image {
+  width: 100%;
+  max-height: 40vh;
+  object-fit: contain;
+  background: #0c0b09;
+}
+.menu-item-modal-description {
+  margin-bottom: 16px;
+  color: rgba(255, 255, 255, 0.72);
+}
+.menu-item-modal-allergens > span {
+  display: block;
+  margin-bottom: 8px;
+  color: #cda45e;
+  font-size: 13px;
+  font-weight: 600;
+}
+.menu-item-modal-allergens > div {
+  margin: 0;
+}
+.menu-item-modal-allergen {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  color: rgba(255, 255, 255, 0.72);
+  font-size: 11px;
+  line-height: 1.25;
+}
+.menu-item-modal-allergens img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 6px;
 }
 .digital-menu-page .menu-content .menu-price {
   background: #1a1814;

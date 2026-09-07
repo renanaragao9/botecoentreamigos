@@ -3,9 +3,12 @@
 namespace Tests\Feature;
 
 use App\Models\ContactInfo;
+use App\Models\AllergenGuide;
 use App\Models\MenuCategory;
 use App\Models\MenuItem;
+use Database\Seeders\AllergenGuideSeeder;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Support\Facades\Storage;
 use Tests\TestCase;
 
 class ExampleTest extends TestCase
@@ -62,7 +65,49 @@ class ExampleTest extends TestCase
             ->assertOk()
             ->assertSee('Petiscos')
             ->assertSee('Batata frita')
-            ->assertSee('glightbox menu-image-link', false)
+            ->assertSee('menu-item-detail-trigger', false)
+            ->assertSee('data-bs-toggle="modal"', false)
+            ->assertSee('menu-item-modals', false)
             ->assertSee('R$ 20,00');
+    }
+
+    public function test_a_menu_item_can_reference_multiple_allergen_guides(): void
+    {
+        $category = MenuCategory::create(['name' => 'Petiscos']);
+        $lactoseGuide = AllergenGuide::create(['name' => 'Contém lactose', 'icon' => 'allergen-guides/lactose.png']);
+        $glutenGuide = AllergenGuide::create(['name' => 'Contém glúten', 'icon' => 'allergen-guides/gluten.png']);
+
+        $item = MenuItem::create([
+            'menu_category_id' => $category->id,
+            'name' => 'Queijo coalho',
+            'price' => '12.00',
+        ]);
+        $item->allergenGuides()->attach([$lactoseGuide->id, $glutenGuide->id]);
+
+        $this->assertCount(2, $item->allergenGuides);
+        $this->assertTrue($lactoseGuide->menuItems->contains($item));
+        $this->assertTrue($glutenGuide->menuItems->contains($item));
+
+        $this->get(route('menu'))
+            ->assertOk()
+            ->assertSee('Alérgenos:')
+            ->assertSee('Contém lactose')
+            ->assertSee('menu-item-modal-allergens', false)
+            ->assertSee('/storage/allergen-guides/lactose.png', false);
+    }
+
+    public function test_allergen_guide_seeder_creates_the_primary_allergen_list(): void
+    {
+        Storage::fake('public');
+
+        $this->seed(AllergenGuideSeeder::class);
+
+        $this->assertSame(24, AllergenGuide::count());
+        Storage::disk('public')->assertExists('allergen-guides/alert.svg');
+        Storage::disk('public')->assertExists('allergen-guides/peanut.png');
+        $this->assertDatabaseHas('allergen_guides', [
+            'name' => 'Amendoim',
+            'icon' => 'allergen-guides/peanut.png',
+        ]);
     }
 }

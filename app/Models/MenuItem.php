@@ -5,6 +5,7 @@ namespace App\Models;
 use App\Models\Concerns\HasFallbackImage;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class MenuItem extends Model
 {
@@ -27,6 +28,11 @@ class MenuItem extends Model
     public function category(): BelongsTo
     {
         return $this->belongsTo(MenuCategory::class, 'menu_category_id');
+    }
+
+    public function allergenGuides(): BelongsToMany
+    {
+        return $this->belongsToMany(AllergenGuide::class);
     }
 
     protected function fallbackImage(): string
